@@ -127,17 +127,17 @@
                      <div class="bg-header-nav ">
                      <nav class="header-nav">
                         <ul class="item_big">
-                           <li class="nav-item active ">				
+                           <li class="nav-item {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">				
                                  <a class="a-img" href="{{route('home')}}" title="Trang chủ">
                                  Trang chủ
                                  </a>
                            </li>
-                           <li class="nav-item ">				
+                           <li class="nav-item {{ Route::currentRouteName() == 'listSale' ? 'active' : '' }}">				
                                  <a class="a-img" href="{{route('listSale')}}" title="Sale">
                                  Sale
                                  </a>
                            </li>
-                           <li class="nav-item   has-mega">
+                           <li class="nav-item {{ Route::currentRouteName() == 'allProduct' || Route::currentRouteName() == 'allListProCate' || Route::currentRouteName() == 'allListProType' ? 'active' : '' }} has-mega">
                                  <a class="a-img caret-down" href="{{route('allProduct')}}" title="Sản phẩm">
                                  Sản phẩm
                                  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
@@ -215,7 +215,7 @@
                                     @endforeach
                                  </ul>
                            </li>
-                           <li class="nav-item  ">
+                           <li class="nav-item {{ Route::currentRouteName() == 'allListBlog' || Route::currentRouteName() == 'listCateBlog' || Route::currentRouteName() == 'listTypeBlog' ? 'active' : '' }}">
                                  <a class="a-img caret-down" href="{{route('allListBlog')}}" title="Tin tức">
                                  Tin tức
                                  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
@@ -243,7 +243,7 @@
                                     @endforeach
                                  </ul>
                            </li>
-                           <li class="nav-item ">				
+                           <li class="nav-item {{ Route::currentRouteName() == 'lienHe' ? 'active' : '' }}">				
                                  <a class="a-img" href="{{route('lienHe')}}" title="Liên hệ">
                                  Liên hệ
                                  </a>

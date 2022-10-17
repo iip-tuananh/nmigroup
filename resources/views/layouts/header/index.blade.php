@@ -27,7 +27,7 @@
                <div class="header-page-link">
                      <ul class="group-account">
                      <li class="block-wish">
-                        <div class="icon">
+                        <div class="icon d-lg-none">
                            <a href="tel:{{$setting->phone1}}" title="Hotline: {{$setting->phone1}}" rel="nofollow">
                               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                               width="33.834px" height="33.834px" viewBox="0 0 33.834 33.834" style="enable-background:new 0 0 33.834 33.834;"
@@ -62,6 +62,31 @@
                            </svg>
                            </a>
                         </div>
+                        <div class="icon hotline">
+                           <a href="tel:{{$setting->phone1}}" title="Hotline: {{$setting->phone1}}" rel="nofollow">
+                              <img src="{{url('frontend/images/hotline.png')}}" alt="" loading="lazy">
+                              <p>{{$setting->phone1}}</p>
+                           </a>
+                        </div>
+                        <style>
+                           @media only screen and (max-width: 991px) {
+                              .group-account .hotline{
+                                 display: none;
+                              }
+                           }
+                           .group-account .hotline img {
+                              width: 170px;
+                           }
+                           .group-account .hotline p {
+                              position: absolute;
+                              top: 50%;
+                              left: 60%;
+                              transform: translate(-50%, -50%);
+                              color: #fb0301;
+                              font-size: 18px;
+                              margin: 0;
+                           }
+                        </style>
                      </li>
                      <li class="cart-drop">
                         <div class="icon">

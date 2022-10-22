@@ -42,7 +42,7 @@ Danh sách sản phẩm khuyến mãi
             </a>
         @endforeach
     </div>
-    <section class="main_container collection col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+    <section class="main_container collection col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="category-products products category-products-grids clearfix">
         <section class="products-view products-view-grid row">
             @foreach ($products as $product)

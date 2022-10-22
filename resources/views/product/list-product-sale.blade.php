@@ -46,7 +46,7 @@ Danh sách sản phẩm khuyến mãi
         <div class="category-products products category-products-grids clearfix">
         <section class="products-view products-view-grid row">
             @foreach ($products as $product)
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-6">
                     @include('layouts.product.item', ['product'=>$product])
                 </div>
             @endforeach

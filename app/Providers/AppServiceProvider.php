@@ -75,7 +75,7 @@ class AppServiceProvider extends ServiceProvider
                 }
             ])
             ->where('status',1)
-            ->orderBy('id','asc')
+            ->orderBy('id','desc')
             ->get(['id','name','slug','avatar']);
             $hotBlogs = Blog::where([
                 'status'=>1, 'home_status'=>1

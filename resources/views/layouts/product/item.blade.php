@@ -6,10 +6,16 @@ $discountPrice = $product['price'] - $product['price'] * ($product['discount'] /
 <div class="product-block-item">
    <div class="product-thumbnail">
       <a href="{{route('detailProduct', ['cate'=>$product->cate_slug, 'slug'=>$product->slug])}}" title="{{languageName($product->name)}}" class="product-transition">
-      <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="{{$img[0]}}" alt="{{languageName($product->name)}}" />
+         @if (count($img) > 1)
+         <img class="lazy layout-1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="{{$img[0]}}" alt="{{languageName($product->name)}}" />
+         <img class="lazy layout-2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="{{$img[1]}}" alt="{{languageName($product->name)}}" />
+         @else
+         <img class="lazy layout-1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="{{$img[0]}}" alt="{{languageName($product->name)}}" />
+         <img class="lazy layout-2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="{{$img[0]}}" alt="{{languageName($product->name)}}" />
+         @endif
       </a>
       @if ($product->discount > 0)
-      <div class="sale_label">Sale</div>
+      <div class="sale_label">-{{$product->discount}}%</div>
       @endif
       <div class="product-action">
          <div class="action-cart group-buttons d-flex align-items-center justify-content-center">
@@ -29,9 +35,9 @@ $discountPrice = $product['price'] - $product['price'] * ($product['discount'] /
       @if ($product->discount > 0 && $product->price > 0)
       <div class="product__price">
          <span class="price">{{number_format($discountPrice, 0, '', '.')}}₫</span>
-         <span class="discount">- 
+         {{-- <span class="discount">- 
          {{$product->discount}}% 
-         </span>
+         </span> --}}
          <span class="old-price">{{number_format($product->price, 0, '', '.')}}₫</span>
       </div>
       @elseif($product->discount == 0 && $product->price > 0)
@@ -45,3 +51,18 @@ $discountPrice = $product['price'] - $product['price'] * ($product['discount'] /
       @endif
    </div>
 </div>
+<style>
+   .layout-2 {
+      opacity: 0;
+      /* display: none; */
+      transition: all .5s ease;
+   }
+   /* .product-block-item:hover .layout-1 {
+      display: none;
+      opacity: 1;
+   } */
+   .product-block-item:hover .layout-2 {
+      opacity: 1;
+      /* display: block; */
+   }
+</style>

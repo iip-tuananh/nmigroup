@@ -232,11 +232,9 @@ Danh sách {{$title}}
                         <ul class="filter-vendor">
                            @foreach ($productBrands as $brand)
                               <li class="filter-item filter-item--check-box filter-item--green ">
-                                 <label data-filter="chanel" for="filter-chanel" class="chanel">
-                                 <input type="checkbox" id="filter-chanel" onchange="toggleFilter(this)"  data-group="Hãng" data-field="vendor.filter_key" data-text="Chanel" value="(&#34;Chanel&#34;)" data-operator="OR">
-                                 <i class="fa"></i>
+                                 <a href="{{route('listProductBrand', ['slug'=>$brand->slug])}}" title="{{$brand->name}}">
                                  <span>{{$brand->name}}</span>
-                                 </label>
+                                 </a>
                               </li>
                            @endforeach
                         </ul>

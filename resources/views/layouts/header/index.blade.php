@@ -5,12 +5,12 @@
    <div class="middle-header">
          <div class="container">
          <div class="row align-items-center">
-            <div class="col-xl-2 col-lg-2 d-lg-block d-none block-logo">
+            <div class="col-xl-3 col-lg-3 d-lg-block d-none block-logo">
                <a href="{{route('home')}}" class="logo">	
                <img src="{{$setting->logo}}" alt="{{$setting->company}}">	
                </a>
             </div>
-            <div class="col-xl-7 col-lg-8 block-search">
+            <div class="col-xl-6 col-lg-6 block-search">
                <div class="nd-header-search nd-searchs">
                      <form action="{{route('search_result')}}" method="post" class="nd-header-search-form" role="search">
                         @csrf
@@ -23,7 +23,7 @@
                      </form>
                </div>
             </div>
-            <div class="col-xl-3 col-lg-2 d-lg-flex header-right">
+            <div class="col-xl-3 col-lg-3 d-lg-flex header-right">
                <div class="header-page-link">
                      <ul class="group-account">
                      <li class="block-wish">

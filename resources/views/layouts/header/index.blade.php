@@ -1,6 +1,6 @@
 <header class="header">
    <div class="top_header">
-         <div class="text_top_header">Chào mừng bạn đến với {{$setting->company}} <span>|</span> <a class="d-xs-none" target="_blank" href="https://www.google.com/maps/place/{{$setting->address1}}" title="{{$setting->address1}}">{{$setting->address1}}</a></div>
+         <h1 class="text_top_header text-white" style="font-size: 14px; margin-bottom: 0">Chào mừng bạn đến với {{$setting->company}} <span>|</span> <a class="d-xs-none" target="_blank" href="https://www.google.com/maps/place/{{$setting->address1}}" title="{{$setting->address1}}">{{$setting->address1}}</a></h1>
    </div>
    <div class="middle-header">
          <div class="container">
@@ -63,13 +63,13 @@
                            </a>
                         </div>
                         <div class="icon hotline">
-                           <a href="tel:{{$setting->phone1}}" title="Hotline: {{$setting->phone1}}" rel="nofollow">
-                              <img src="{{url('frontend/images/hotline.png')}}" alt="" loading="lazy">
-                              <p>{{$setting->phone1}}</p>
+                           <a href="tel:0837600533" title="Hotline: 0837600533" rel="nofollow">
+                              <img src="https://lapari.vn/frontend/images/hotline.png" alt="" loading="lazy">
+                              <p>0837600533</p>
                            </a>
                         </div>
                         <style>
-                           @media only screen and (max-width: 991px) {
+                           @media  only screen and (max-width: 991px) {
                               .group-account .hotline{
                                  display: none;
                               }
@@ -79,7 +79,7 @@
                            }
                            .group-account .hotline p {
                               position: absolute;
-                              top: 50%;
+                              top: 66%;
                               left: 60%;
                               transform: translate(-50%, -50%);
                               color: #fb0301;

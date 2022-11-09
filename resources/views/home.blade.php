@@ -201,6 +201,8 @@
                            </div>
                         @endforeach
                      </div>
+                     <div class="swiper-button-prev" style="color: #96908f"></div>
+                     <div class="swiper-button-next" style="color: #96908f"></div>
                </div>
             </div>
          </div>
@@ -212,6 +214,10 @@
             var swipercate = new Swiper('.swiper_3banner', {
                slidesPerView: 3,
                //centeredSlides: true,
+               navigation: {
+               nextEl: ".swiper-button-next",
+               prevEl: ".swiper-button-prev",
+               },
                loop: false,
                grabCursor: true,
                spaceBetween: 20,
@@ -296,11 +302,11 @@
          autoplay: true,
          breakpoints: {
                300: {
-                  slidesPerView: 1,
+                  slidesPerView: 2,
                   spaceBetween: 20
                },
                375: {
-                  slidesPerView: 1,
+                  slidesPerView: 2,
                   spaceBetween: 20
                },
                500: {
@@ -496,15 +502,15 @@
             },
             breakpoints: {
                300: {
-                     slidesPerView: 2,
+                     slidesPerView: 1,
                      spaceBetween: 20
                },
                640: {
-                     slidesPerView: 2,
+                     slidesPerView: 1,
                      spaceBetween: 20
                },
                768: {
-                     slidesPerView: 2,
+                     slidesPerView: 1,
                      spaceBetween: 20
                },
                991: {

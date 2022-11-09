@@ -54,15 +54,8 @@ $discountPrice = $product['price'] - $product['price'] * ($product['discount'] /
 <style>
    .layout-2 {
       opacity: 0;
-      /* display: none; */
       transition: all .5s ease;
-   }
-   /* .product-block-item:hover .layout-1 {
-      display: none;
+   }   .product-block-item:hover .layout-2 {
       opacity: 1;
-   } */
-   .product-block-item:hover .layout-2 {
-      opacity: 1;
-      /* display: block; */
    }
 </style>

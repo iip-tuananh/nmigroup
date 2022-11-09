@@ -147,7 +147,7 @@
                   </div>
                </div>
             @else
-            <div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer cart_body items">
+            <div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer cart_body items" data-url="{{route('removeCart')}}">
                <div class="ajaxcart__row">
                   <div class="cart--empty-message">
                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 201.387 201.387" style="enable-background:new 0 0 201.387 201.387;" xml:space="preserve">
@@ -280,15 +280,15 @@
                   },
                   breakpoints: {
                         300: {
-                           slidesPerView: 2,
+                           slidesPerView: 1,
                            spaceBetween: 20
                         },
                         640: {
-                           slidesPerView: 2,
+                           slidesPerView: 1,
                            spaceBetween: 20
                         },
                         768: {
-                           slidesPerView: 2,
+                           slidesPerView: 1,
                            spaceBetween: 20
                         },
                         991: {
@@ -374,7 +374,7 @@
                })
                total = formatNumber(totalPrice);
                $('#CartContainer .cart_body .ajaxcart__row').html(html);
-               $('#CartContainer .total-price').html(total+'₫');
+               $('#CartContainer .ajaxcart__footer').html(`<div class="ajaxcart__subtotal"><div class="cart__subtotal"><div class="cart__col-6">Tổng tiền:</div><div class="text-right cart__totle"><span class="total-price">`+total+`₫</span></div></div></div><div class="cart__btn-proceed-checkout-dt"><button onclick="location.href='/thanh-toan.html'" type="button" class="button btn btn-default cart__btn-proceed-checkout" id="btn-proceed-checkout" title="Thanh toán">Thanh toán</button></div>`);
                $('.cart-drop .count_item_pr').html(countCart);
                $('.backdrop__body-backdrop___1rvky, .cart-sidebar').addClass('active');
             }

@@ -208,6 +208,13 @@
          </div>
          </div>
    </section>
+   <style>
+      @media only screen and (min-width: 768px) {
+         .swiper_3banner .swiper-button-prev, .swiper_3banner .swiper-button-next {
+            display: none;
+         }
+      }
+   </style>
    <script>
          /*cate*/
          window.addEventListener('DOMContentLoaded', (event) => {

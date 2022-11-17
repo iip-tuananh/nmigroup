@@ -276,17 +276,16 @@
                         </a>
                         </h2>
                   </div>
-                  <div class="row">
-                     <div class="swiper-container swiper-product-cate">
-                        <div class="swiper-wrapper">
-                           @foreach ($cate->product as $product)
-                              <div class="swiper-slide">
-                                 @include('layouts.product.item', ['product'=>$product])
-                              </div>
-                           @endforeach
-
-                        </div>
+                  <div class="swiper-container swiper-product-cate">
+                     <div class="swiper-wrapper">
+                        @foreach ($cate->product as $product)
+                           <div class="swiper-slide">
+                              @include('layouts.product.item', ['product'=>$product])
+                           </div>
+                        @endforeach
                      </div>
+                     <div class="swiper-button-prev" style="color: #96908f"></div>
+                     <div class="swiper-button-next" style="color: #96908f"></div>
                   </div>
                </div>
             </div>
@@ -306,6 +305,10 @@
          spaceBetween: 20,
          roundLengths: true,
          slideToClickedSlide: false,
+         navigation: {
+               nextEl: ".swiper-button-next",
+               prevEl: ".swiper-button-prev",
+               },
          autoplay: true,
          breakpoints: {
                300: {

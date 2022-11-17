@@ -36,7 +36,7 @@
                 <template slot="thead">
                   <vs-th>Đơn hàng đã hoàn tất</vs-th>
                   <vs-th>Chỉnh sửa lúc</vs-th>
-                  <vs-th>Khach hàng</vs-th>
+                  <vs-th>Khách hàng</vs-th>
                   <vs-th>Trạng thái</vs-th>
                   <vs-th>Hành động</vs-th>
                 </template>

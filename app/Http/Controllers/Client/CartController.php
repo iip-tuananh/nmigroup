@@ -32,7 +32,7 @@ class CartController extends Controller
                 $query->cus_name = $request->billingName;
                 $query->cus_phone = $request->billingPhone;
                 $query->cus_email= $request->billingEmail;
-                $query->cus_address= $request->billingAddress;
+                $query->cus_address= $request->billingAddress+', '+$request->billingAddress2+', '+$request->billingAddress1;
                 $query->transport_price = $request->shippingMethod ? $request->shippingMethod : 0;
 				$query->save();
 

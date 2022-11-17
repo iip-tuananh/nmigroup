@@ -1,5 +1,5 @@
-<header class="header">
-   <div class="top_header">
+<header class="header" id="header-fixed">
+   <div class="top_header" id="top-header">
          <h1 class="text_top_header text-white" style="font-size: 14px; margin-bottom: 0">Chào mừng bạn đến với {{$setting->company}} <span>|</span> <a class="d-xs-none" target="_blank" href="https://www.google.com/maps/place/{{$setting->address1}}" title="{{$setting->address1}}">{{$setting->address1}}</a></h1>
    </div>
    <div class="middle-header">
@@ -63,9 +63,10 @@
                            </a>
                         </div>
                         <div class="icon hotline">
-                           <a href="tel:0837600533" title="Hotline: 0837600533" rel="nofollow">
-                              <img src="https://lapari.vn/frontend/images/hotline.png" alt="" loading="lazy">
-                              <p>0837600533</p>
+                           <a href="tel:{{$setting->phone1}}" title="Hotline: {{$setting->phone1}}" rel="nofollow">
+                              <img src="{{url('frontend/images/hotline.jpg')}}" alt="" loading="lazy">
+                              {{-- <img src="{{url('frontend/images/hotline.png')}}" alt="" loading="lazy">
+                              <p>{{$setting->phone1}}</p> --}}
                            </a>
                         </div>
                         <style>
@@ -114,7 +115,7 @@
          </div>
          </div>
    </div>
-   <div class="site-nav">
+   <div class="site-nav" >
          <div class="container">
          <div class="inner">
             <div class="heade_menunavs">

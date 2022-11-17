@@ -16,10 +16,12 @@
 	</style>
 	<!-- End checkout custom css -->
 	<script src="{{	asset('frontend/js/jquery.min.js')}}" type="text/javascript"></script>
-    <script src="{{	asset('frontend/js/notify.min.js')}}" type="text/javascript"></script>
+	<script src="{{	asset('frontend/js/notify.min.js')}}" type="text/javascript"></script>
 	<script src="{{ asset('frontend/js/checkout.vendor.min.js') }}"></script>
 	<script src="{{ asset('frontend/js/checkout.min.js') }}"></script>
 	<script src="{{ asset('frontend/js/stats.min.js') }}"></script>
+
+
 </head>
 <body data-no-turbolink>
 	<header class="banner">
@@ -79,8 +81,8 @@
 														Email
 													</label>
 													<input name="billingEmail" id="email"
-														   type="email" class="field__input"
-														   data-bind="email" value="{{ old('billingEmail') }}">
+														type="email" class="field__input"
+														data-bind="email" value="{{ old('billingEmail') }}">
 												</div>
 												@error('billingEmail')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -90,8 +92,8 @@
 												<div class="field__input-wrapper">
 													<label for="billingName" class="field__label">Họ và tên</label>
 													<input name="billingName" id="billingName"
-														   type="text" class="field__input"
-														   data-bind="billing.name" value="{{ old('billingName') }}">
+														type="text" class="field__input"
+														data-bind="billing.name" value="{{ old('billingName') }}">
 												</div>
 												@error('billingName')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -103,21 +105,49 @@
 														Số điện thoại (tùy chọn)
 													</label>
 													<input name="billingPhone" id="billingPhone"
-														   type="tel" class="field__input"
-														   data-bind="billing.phone" value="{{ old('billingPhone') }}">
+														type="tel" class="field__input"
+														data-bind="billing.phone" value="{{ old('billingPhone') }}">
 												</div>
 												@error('billingPhone')
 													<div class="alert alert-danger">{{ $message }}</div>
 												@enderror
 											</div>
+											<div class="field">
+												<div class="field__input-wrapper">
+													<select name="calc_shipping_provinces" required="" class="field__input">
+		
+														<option value="" class="field__label">Tỉnh / Thành phố</option>
+													
+													</select>
+
+												</div>
+
+											</div>
+											<div class="field">
+												<div class="field__input-wrapper">
+													<select name="calc_shipping_district" required="" class="field__input">
+											
+														<option value="" class="field__label">Quận / Huyện</option>
+													
+													</select>
+
+												</div>
+
+											</div>
+											
+											
+											
+											<input class="billing_address_1" name="billingAddress1" type="hidden" value="">
+											
+											<input class="billing_address_2" name="billingAddress2" type="hidden" value="">
 											<div class="field " data-bind-class="{'field--show-floating-label': billing.address}">
 												<div class="field__input-wrapper">
 													<label for="billingAddress" class="field__label">
 														Địa chỉ (tùy chọn)
 													</label>
 													<input name="billingAddress" id="billingAddress"
-                                             type="text" class="field__input"
-                                             data-bind="billing.address" value="{{ old('billingAddress') }}">
+											type="text" class="field__input"
+											data-bind="billing.address" value="{{ old('billingAddress') }}">
 												</div>
 												@error('billingAddress')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -135,8 +165,8 @@
 												Ghi chú (tùy chọn)
 											</label>
 											<textarea name="note" id="note"
-                                          type="text" class="field__input"
-                                          data-bind="note">{{ old('note') }}</textarea>
+										type="text" class="field__input"
+										data-bind="note">{{ old('note') }}</textarea>
 										</div>
 										
 									</div>
@@ -166,8 +196,8 @@
 
 										
 										<div class="alert alert-retry alert--danger hide"
-                                 data-bind-event-click="handleShippingMethodErrorRetry()"
-                                 data-bind-show="!isLoadingShippingMethod && !isAddressSelecting && isLoadingShippingError">
+								data-bind-event-click="handleShippingMethodErrorRetry()"
+								data-bind-show="!isLoadingShippingMethod && !isAddressSelecting && isLoadingShippingError">
 											<span data-bind="loadingShippingErrorMessage"></span> <i class="fa fa-refresh"></i>
 										</div>
 
@@ -193,10 +223,10 @@
 												<div class="radio-wrapper">
 													<div class="radio__input">
 														<input name="paymentMethod" id="paymentMethod-509901"
-															   type="radio" class="input-radio"
-															   data-bind="paymentMethod"
-															   value="509901"
-															   >
+															type="radio" class="input-radio"
+															data-bind="paymentMethod"
+															value="509901"
+															>
 													</div>
 													<label for="paymentMethod-509901" class="radio__label">
 														<span class="radio__label__primary">Thanh toán khi giao hàng (COD)</span>
@@ -230,8 +260,8 @@
 						</div>
 						<div id="common-alert" data-tg-refresh="refreshError">
 							<div class="alert alert--danger hide-on-desktop"
-                           data-bind-show="!isSubmitingCheckout && isSubmitingCheckoutError"
-                           data-bind="submitingCheckoutErrorMessage">
+						data-bind-show="!isSubmitingCheckout && isSubmitingCheckoutError"
+						data-bind="submitingCheckoutErrorMessage">
 							</div>
 						</div>
 					</div>
@@ -265,43 +295,43 @@
 											</tr>
 										</thead>
 										<tbody>
-                                 @php
-                                    $totalPrice = 0;
-                                 @endphp
-                                 @foreach ($cart as $item)
+								@php
+									$totalPrice = 0;
+								@endphp
+								@foreach ($cart as $item)
 									@php
 										$pricePro = $item['price'] - $item['price'] * ($item['discount']/100);
 									@endphp
-                                    <tr class="product">
-                                       <td class="product__image">
-                                          <div class="product-thumbnail">
-                                             <div class="product-thumbnail__wrapper" data-tg-static>
-                                                <img src="{{ $item['image']}}"
-                                                   alt="{{ languageName($item['name']) }}" class="product-thumbnail__image">
-                                             </div>
-                                             <span class="product-thumbnail__quantity">{{$item['quantity']}}</span>
-                                          </div>
-                                       </td>
-                                       <th class="product__description">
-                                          <span class="product__description__name">
-                                             {{ languageName($item['name']) }}
-                                          </span>
-                                       </th>
-                                       <td class="product__quantity visually-hidden"><em>Số lượng:</em>{{$item['quantity']}}</td>
-                                       <td class="product__price">
-                                          {{number_format($pricePro* $item['quantity'])}}₫
-                                       </td>
-                                    </tr>
-                                    @php
-                                       $totalPrice += $pricePro * $item['quantity'];
-                                    @endphp
-                                 @endforeach
+									<tr class="product">
+									<td class="product__image">
+										<div class="product-thumbnail">
+											<div class="product-thumbnail__wrapper" data-tg-static>
+												<img src="{{ $item['image']}}"
+												alt="{{ languageName($item['name']) }}" class="product-thumbnail__image">
+											</div>
+											<span class="product-thumbnail__quantity">{{$item['quantity']}}</span>
+										</div>
+									</td>
+									<th class="product__description">
+										<span class="product__description__name">
+											{{ languageName($item['name']) }}
+										</span>
+									</th>
+									<td class="product__quantity visually-hidden"><em>Số lượng:</em>{{$item['quantity']}}</td>
+									<td class="product__price">
+										{{number_format($pricePro* $item['quantity'])}}₫
+									</td>
+									</tr>
+									@php
+									$totalPrice += $pricePro * $item['quantity'];
+									@endphp
+								@endforeach
 										</tbody>
 									</table>
 								</div>
 								<div class="order-summary__section order-summary__section--total-lines order-summary--collapse-element"
-                           data-define="{subTotalPriceText: '190.000₫'}"
-                           data-tg-refresh="refreshOrderTotalPrice" id="orderSummary">
+						data-define="{subTotalPriceText: '190.000₫'}"
+						data-tg-refresh="refreshOrderTotalPrice" id="orderSummary">
 									<table class="total-line-table">
 										<caption class="visually-hidden">Tổng giá trị</caption>
 										<thead>
@@ -322,7 +352,8 @@
 												<th class="total-line__name">
 													Phí vận chuyển
 												</th>
-												<td class="total-line__price" data-bind="getTextShippingPrice()">
+												<td class="total-line__price" >
+													30,000₫
 												</td>
 											</tr>
 										</tbody>
@@ -334,7 +365,7 @@
 													</span>
 												</th>
 												<td class="total-line__price">
-													<span class="payment-due__price">{{number_format($totalPrice)}}₫</span>
+													<span class="payment-due__price">{{number_format($totalPrice + 30000)}}₫</span>
 												</td>
 											</tr>
 										</tfoot>
@@ -354,8 +385,8 @@
 								</div>
 								<div id="common-alert-sidebar" data-tg-refresh="refreshError">
 									<div class="alert alert--danger hide-on-mobile hide"
-                              data-bind-show="!isSubmitingCheckout && isSubmitingCheckoutError"
-                              data-bind="submitingCheckoutErrorMessage">
+							data-bind-show="!isSubmitingCheckout && isSubmitingCheckoutError"
+							data-bind="submitingCheckoutErrorMessage">
 									</div>
 								</div>
 							</div>
@@ -385,5 +416,75 @@
 			color: red;
 		}
 	</style>
+	<script src='https://cdn.jsdelivr.net/gh/vietblogdao/js/districts.min.js'></script>
+	<script>
+	if (address_2 = localStorage.getItem('address_2_saved')) {
+	  $('select[name="calc_shipping_district"] option').each(function() {
+		if ($(this).text() == address_2) {
+		  $(this).attr('selected', '')
+		}
+	  })
+	  $('input.billing_address_2').attr('value', address_2)
+	}
+	if (district = localStorage.getItem('district')) {
+	  $('select[name="calc_shipping_district"]').html(district)
+	  $('select[name="calc_shipping_district"]').on('change', function() {
+		var target = $(this).children('option:selected')
+		target.attr('selected', '')
+		$('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+		address_2 = target.text()
+		$('input.billing_address_2').attr('value', address_2)
+		district = $('select[name="calc_shipping_district"]').html()
+		localStorage.setItem('district', district)
+		localStorage.setItem('address_2_saved', address_2)
+	  })
+	}
+	$('select[name="calc_shipping_provinces"]').each(function() {
+	  var $this = $(this),
+		stc = ''
+	  c.forEach(function(i, e) {
+		e += +1
+		stc += '<option value=' + e + '>' + i + '</option>'
+		$this.html('<option value="">Tỉnh / Thành phố</option>' + stc)
+		if (address_1 = localStorage.getItem('address_1_saved')) {
+		  $('select[name="calc_shipping_provinces"] option').each(function() {
+			if ($(this).text() == address_1) {
+			  $(this).attr('selected', '')
+			}
+		  })
+		  $('input.billing_address_1').attr('value', address_1)
+		}
+		$this.on('change', function(i) {
+		  i = $this.children('option:selected').index() - 1
+		  var str = '',
+			r = $this.val()
+		  if (r != '') {
+			arr[i].forEach(function(el) {
+			  str += '<option value="' + el + '">' + el + '</option>'
+			  $('select[name="calc_shipping_district"]').html('<option value="">Quận / Huyện</option>' + str)
+			})
+			var address_1 = $this.children('option:selected').text()
+			var district = $('select[name="calc_shipping_district"]').html()
+			localStorage.setItem('address_1_saved', address_1)
+			localStorage.setItem('district', district)
+			$('select[name="calc_shipping_district"]').on('change', function() {
+			  var target = $(this).children('option:selected')
+			  target.attr('selected', '')
+			  $('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+			  var address_2 = target.text()
+			  $('input.billing_address_2').attr('value', address_2)
+			  district = $('select[name="calc_shipping_district"]').html()
+			  localStorage.setItem('district', district)
+			  localStorage.setItem('address_2_saved', address_2)
+			})
+		  } else {
+			$('select[name="calc_shipping_district"]').html('<option value="">Quận / Huyện</option>')
+			district = $('select[name="calc_shipping_district"]').html()
+			localStorage.setItem('district', district)
+			localStorage.removeItem('address_1_saved', address_1)
+		  }
+		})
+	  })
+	})</script>
 </body>
 </html>

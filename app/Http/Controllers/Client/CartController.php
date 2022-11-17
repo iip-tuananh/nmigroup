@@ -27,7 +27,7 @@ class CartController extends Controller
 				$query->code_bill = $code_bill;
 				$query->code_customer = $profile ? $profile->id : 0;
 				$query->total_money = $request->total_money;
-				$query->status = 0;
+				$query->statu = 0;
 				$query->note = $request->note;
                 $query->cus_name = $request->billingName;
                 $query->cus_phone = $request->billingPhone;

@@ -45,7 +45,8 @@
                         <span :data="pr.id">{{pr.name}}</span><br>
                       </div>
                     </vs-td>
-                    <vs-td :data="tr.total_money">{{formatNumber(tr.total_money)}}₫</vs-td>
+                    <vs-td :data="tr.total_money" v-if="tr.total_money != null">{{formatNumber(tr.total_money)}}₫</vs-td>
+                    <vs-td :data="tr.total_money" v-if="tr.total_money == null">0₫</vs-td>
                     <vs-td :data="tr.created_at">{{formatDate(tr.created_at)}}</vs-td>
                     <vs-td :data="tr.cus_name">
                       {{tr.cus_name}}

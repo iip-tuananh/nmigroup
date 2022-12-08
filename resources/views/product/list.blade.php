@@ -86,6 +86,11 @@ Danh sách {{$title}}
          {{$title}}
       </span>
    </h1>
+   @if (isset($cateno))
+   <div class="row">
+      {!!$cateno->content!!}
+   </div>
+   @endif
    <div class="row">
       <aside class="sidebar col-lg-12 col-md-12 col-sm-12 col-12">
          <div class="aside-category-sort">

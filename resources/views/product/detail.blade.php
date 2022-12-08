@@ -8,7 +8,9 @@
 @php
 $imgs = json_decode($product->images);
 $imgColor = json_decode($product->size);
-$priceDiscount = $product->price - $product->price * ($product->discount / 100);
+if ($product->discount > 0) {
+   $discount = round((($product['price'] - $product['discount']) / $product['price']) * 100, 1, PHP_ROUND_HALF_UP);
+}
 @endphp
 {{url(''.$imgs[0])}}
 @endsection
@@ -73,17 +75,17 @@ $priceDiscount = $product->price - $product->price * ($product->discount / 100);
          <div class="col-lg-6 col-md-12 col-12 details-pro">
             <div class="nd-info-product">
                <div class="brand-name">
-                  <div class="sku-product"><span>{{$product->brand->name}}</span></div>
+                  <div class="sku-product"><span>{{$product->brand_id != '' ? $product->brand->name :''}}</span></div>
                </div>
                <h1 class="title-head">{{languageName($product->name)}}</h1>
                <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                   @if ($product->discount > 0)
                      <div class="price-box clearfix">
                         <span class="special-price">
-                           <span class="price product-price">{{number_format($priceDiscount, 0, '', '.')}}₫</span>
+                           <span class="price product-price">{{number_format($product->discount, 0, '', '.')}}₫</span>
                         </span>
                         <span class="save-price"><span class="discount_">- 
-                        {{$product->discount}}% 
+                        {{$discount}}% 
                         </span></span> <!-- Tiết kiệm -->
                         <span class="old-price" itemprop="priceSpecification" itemscope="" itemtype="http://schema.org/priceSpecification">
                            <del class="price product-price-old">

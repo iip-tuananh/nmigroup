@@ -56,6 +56,7 @@ Route::group(['namespace'=>'Api','middleware'=>'auth:api'],function(){
 		Route::post('draft','BillController@draft');
 		Route::get('detail/{code}','BillController@detail');
 		Route::post('change-status','BillController@changeStatus');
+		Route::get('delete/{code}','BillController@deleteBill');
 	});
 	Route::group(['prefix'=>'pagecontent'], function(){
 		Route::post('add','PageContentController@add');

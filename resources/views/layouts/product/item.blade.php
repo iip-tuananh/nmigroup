@@ -1,7 +1,9 @@
 
 @php
 $img = json_decode($product['images']);
-$discountPrice = $product['price'] - $product['price'] * ($product['discount'] / 100);
+if ($product->discount > 0) {
+   $discount = round((($product['price'] - $product['discount']) / $product['price']) * 100, 1, PHP_ROUND_HALF_UP);
+}
 @endphp
 <div class="product-block-item">
    <div class="product-thumbnail">
@@ -15,7 +17,7 @@ $discountPrice = $product['price'] - $product['price'] * ($product['discount'] /
          @endif
       </a>
       @if ($product->discount > 0)
-      <div class="sale_label">-{{$product->discount}}%</div>
+      <div class="sale_label">- {{$discount}}%</div>
       @endif
       <div class="product-action">
          <div class="action-cart group-buttons d-flex align-items-center justify-content-center">
@@ -34,10 +36,7 @@ $discountPrice = $product['price'] - $product['price'] * ($product['discount'] /
       <span class="product-sum"> {!!languageName($product->description)!!}</span>
       @if ($product->discount > 0 && $product->price > 0)
       <div class="product__price">
-         <span class="price">{{number_format($discountPrice, 0, '', '.')}}₫</span>
-         {{-- <span class="discount">- 
-         {{$product->discount}}% 
-         </span> --}}
+         <span class="price">{{number_format($product->discount, 0, '', '.')}}₫</span>
          <span class="old-price">{{number_format($product->price, 0, '', '.')}}₫</span>
       </div>
       @elseif($product->discount == 0 && $product->price > 0)

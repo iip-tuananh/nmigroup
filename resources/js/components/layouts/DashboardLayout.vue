@@ -160,17 +160,17 @@ export default {
             }
           ],
         },
-        {
-          icon: "mdi mdi-newspaper menu-icon",
-          name: "Banner quảng cáo",
-          route_name: "",
-          sub: [
-            {
-              name: "Danh sách",
-              path: "/bannerads",
-            }
-          ],
-        },
+        // {
+        //   icon: "mdi mdi-newspaper menu-icon",
+        //   name: "Banner quảng cáo",
+        //   route_name: "",
+        //   sub: [
+        //     {
+        //       name: "Danh sách",
+        //       path: "/bannerads",
+        //     }
+        //   ],
+        // },
         {
           icon: "mdi mdi-file-image menu-icon",
           name: "Website",
@@ -181,17 +181,21 @@ export default {
               path: "/banner",
             },
             {
-              name: "Quản lý đối tác",
-              path: "/partner",
+              name: "Banner quảng cáo",
+              path: "/bannerads",
             },
-            {
-              name: "Thư viện ảnh",
-              path: "/prize",
-            },
-            {
-              name: "Quản lý video",
-              path: "/video",
-            },
+            // {
+            //   name: "Quản lý đối tác",
+            //   path: "/partner",
+            // },
+            // {
+            //   name: "Thư viện ảnh",
+            //   path: "/prize",
+            // },
+            // {
+            //   name: "Quản lý video",
+            //   path: "/video",
+            // },
             // {
             //   name: "Quản lý Founder",
             //   path: "/founder",
@@ -208,17 +212,17 @@ export default {
           route_name: "",
           sub: [
             {
-              name: "Đơn hàng đã thanh toán",
-              path: "/bill/paymented",
-            },
-            {
               name: "Đơn hàng cần kiểm tra",
               path: "/bill/draft",
             },
             {
-              name: "Đơn hàng chưa hoàn tất",
-              path: "/bill/Unpayment",
+              name: "Đơn hàng đã thanh toán",
+              path: "/bill/paymented",
             },
+            // {
+            //   name: "Đơn hàng chưa hoàn tất",
+            //   path: "/bill/Unpayment",
+            // },
           ],
         },
         // {

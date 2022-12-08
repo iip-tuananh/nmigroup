@@ -8,18 +8,16 @@
 	<meta name="description" content="KoKo Pet - Thanh toán đơn hàng" />
 	<title>NMIGROUP - Thanh toán đơn hàng</title>
 	<link rel="icon" href="{{url(''.$setting->favicon)}}" type="image/x-icon">
-	<link rel="stylesheet" href="{{ asset('frontend/css/checkout.vendor.min.js') }}">
 	<link rel="stylesheet" href="{{ asset('frontend/css/checkout.min.css') }}">
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- Begin checkout custom css -->
 	<style>
 	</style>
 	<!-- End checkout custom css -->
-	<script src="{{	asset('frontend/js/jquery.min.js')}}" type="text/javascript"></script>
+	<script src="{{	asset('frontend/js/jquery.js')}}" type="text/javascript"></script>
 	<script src="{{	asset('frontend/js/notify.min.js')}}" type="text/javascript"></script>
 	<script src="{{ asset('frontend/js/checkout.vendor.min.js') }}"></script>
 	<script src="{{ asset('frontend/js/checkout.min.js') }}"></script>
-	<script src="{{ asset('frontend/js/stats.min.js') }}"></script>
 
 
 </head>
@@ -82,7 +80,7 @@
 													</label>
 													<input name="billingEmail" id="email"
 														type="email" class="field__input"
-														data-bind="email" value="{{ old('billingEmail') }}">
+														data-bind="email" value="{{ old('billingEmail') }}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" data-validation-error-msg= "Email sai định dạng" id="email" class="form-control form-control-lg" required>
 												</div>
 												@error('billingEmail')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -93,7 +91,7 @@
 													<label for="billingName" class="field__label">Họ và tên</label>
 													<input name="billingName" id="billingName"
 														type="text" class="field__input"
-														data-bind="billing.name" value="{{ old('billingName') }}">
+														data-bind="billing.name" value="{{ old('billingName') }}" required>
 												</div>
 												@error('billingName')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -102,11 +100,11 @@
 											<div class="field " data-bind-class="{'field--show-floating-label': billing.phone}">
 												<div class="field__input-wrapper">
 													<label for="billingPhone" class="field__label">
-														Số điện thoại (tùy chọn)
+														Số điện thoại
 													</label>
 													<input name="billingPhone" id="billingPhone"
 														type="tel" class="field__input"
-														data-bind="billing.phone" value="{{ old('billingPhone') }}">
+														data-bind="billing.phone" value="{{ old('billingPhone') }}" required>
 												</div>
 												@error('billingPhone')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -143,11 +141,11 @@
 											<div class="field " data-bind-class="{'field--show-floating-label': billing.address}">
 												<div class="field__input-wrapper">
 													<label for="billingAddress" class="field__label">
-														Địa chỉ (tùy chọn)
+														Địa chỉ
 													</label>
 													<input name="billingAddress" id="billingAddress"
 											type="text" class="field__input"
-											data-bind="billing.address" value="{{ old('billingAddress') }}">
+											data-bind="billing.address" value="{{ old('billingAddress') }}" required>
 												</div>
 												@error('billingAddress')
 													<div class="alert alert-danger">{{ $message }}</div>
@@ -174,9 +172,6 @@
 								
 							</div>
 							<div class="col col--two">
-								
-
-								
 								<section class="section" data-define="{shippingMethod: ''}">
 									<div class="section__header">
 										<div class="layout-flex">
@@ -295,37 +290,39 @@
 											</tr>
 										</thead>
 										<tbody>
-								@php
-									$totalPrice = 0;
-								@endphp
-								@foreach ($cart as $item)
-									@php
-										$pricePro = $item['price'] - $item['price'] * ($item['discount']/100);
-									@endphp
-									<tr class="product">
-									<td class="product__image">
-										<div class="product-thumbnail">
-											<div class="product-thumbnail__wrapper" data-tg-static>
-												<img src="{{ $item['image']}}"
-												alt="{{ languageName($item['name']) }}" class="product-thumbnail__image">
-											</div>
-											<span class="product-thumbnail__quantity">{{$item['quantity']}}</span>
-										</div>
-									</td>
-									<th class="product__description">
-										<span class="product__description__name">
-											{{ languageName($item['name']) }}
-										</span>
-									</th>
-									<td class="product__quantity visually-hidden"><em>Số lượng:</em>{{$item['quantity']}}</td>
-									<td class="product__price">
-										{{number_format($pricePro* $item['quantity'])}}₫
-									</td>
-									</tr>
-									@php
-									$totalPrice += $pricePro * $item['quantity'];
-									@endphp
-								@endforeach
+											@php
+												$totalPrice = 0;
+											@endphp
+											@foreach ($cart as $item)
+												@php
+												if ($item['discount'] > 0) {
+													$pricePro = $item['discount'];
+												} else {
+													$pricePro = $item['price'];
+												}
+												$totalPrice += $pricePro * $item['quantity'];
+												@endphp
+												<tr class="product">
+												<td class="product__image">
+													<div class="product-thumbnail">
+														<div class="product-thumbnail__wrapper" data-tg-static>
+															<img src="{{ $item['image']}}"
+															alt="{{ languageName($item['name']) }}" class="product-thumbnail__image">
+														</div>
+														<span class="product-thumbnail__quantity">{{$item['quantity']}}</span>
+													</div>
+												</td>
+												<th class="product__description">
+													<span class="product__description__name">
+														{{ languageName($item['name']) }}
+													</span>
+												</th>
+												<td class="product__quantity visually-hidden"><em>Số lượng:</em>{{$item['quantity']}}</td>
+												<td class="product__price">
+													{{number_format($pricePro* $item['quantity'])}}₫
+												</td>
+												</tr>
+											@endforeach
 										</tbody>
 									</table>
 								</div>
@@ -346,8 +343,8 @@
 													Tạm tính
 												</th>
 												<td class="total-line__price">{{number_format($totalPrice)}}₫</td>
+												<input name="total_money" type="text" value="{{$totalPrice}}" hidden>
 											</tr>
-											
 											<tr class="total-line total-line--shipping-fee">
 												<th class="total-line__name">
 													Phí vận chuyển

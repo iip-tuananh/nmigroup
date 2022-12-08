@@ -21,6 +21,7 @@ class CartController extends Controller
         $profile = Auth::guard('customer')->user();
         $cart = session()->get('cart', []);
         $code_bill = rand();
+        $address = $request->billingAddress . ', ' . $request->billingAddress2 .', '. $request->billingAddress1;
         DB::beginTransaction();
 			try {
 				$query = new Bill();
@@ -31,17 +32,16 @@ class CartController extends Controller
 				$query->note = $request->note;
                 $query->cus_name = $request->billingName;
                 $query->cus_phone = $request->billingPhone;
-                $query->cus_email= $request->billingEmail;
-                $query->cus_address= $request->billingAddress+', '+$request->billingAddress2+', '+$request->billingAddress1;
+                $query->cus_email = $request->billingEmail;
+                $query->cus_address = $address;
                 $query->transport_price = $request->shippingMethod ? $request->shippingMethod : 0;
 				$query->save();
-
 					
                 foreach($cart as $key => $item){
                     $billdetail = new BillDetail();
                     $billdetail->code_bill = $code_bill;
                     $billdetail->code_product = $item['id'];
-                    $billdetail->name =languageName($item['name']);
+                    $billdetail->name = languageName($item['name']);
                     $billdetail->price = $item['price'];
                     $billdetail->qty = $item['quantity'];
                     $billdetail->images = $item['image'];
@@ -58,8 +58,6 @@ class CartController extends Controller
 			throw $e;
                 return back()->with('error','Gửi đơn hàng thất bại');
 			}
-            
-
     }
     public function listCart(){
         $data['cart'] = session()->get('cart', []);

@@ -63,7 +63,7 @@ class Product extends Model
                 $query->category = $request->category;
                 $query->type_two = $request->type_two;
                 $query->brand_id = $request->brand_id;
-                $query->brand_slug = $brand->slug;
+                $query->brand_slug = $brand ? $brand->slug : '';
                 $query->combo_id = $request->combo_id;
                 $query->preserve = json_encode($request->preserve);
                 $query->cate_slug = $cat ? $cat->slug : '';
@@ -94,7 +94,7 @@ class Product extends Model
             $query->category = $request->category;
             $query->type_two = $request->type_two;
             $query->brand_id = $request->brand_id;
-            $query->brand_slug = $brand->slug;
+            $query->brand_slug = $brand ? $brand->slug : '';
             $query->combo_id = $request->combo_id;
             $query->preserve = json_encode($request->preserve);
             $query->cate_slug = $cat ? $cat->slug : '';

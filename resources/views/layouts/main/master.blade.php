@@ -338,7 +338,11 @@
                   @endphp
                   @foreach ($cartcontent as $cart)
                   @php
-                     $discountPrice = $cart['price'] - $cart['price'] * ($cart['discount'] / 100);
+                     if ($cart['discount'] > 0) {
+                        $discountPrice = $cart['discount'];
+                     } else {
+                        $discountPrice = $cart['price'];
+                     }
                      $totalPrice += $discountPrice * $cart['quantity'];
                   @endphp
                      <div class="ajaxcart__product cart_product" data-line="1">
@@ -388,7 +392,7 @@
                </div>
             @else
             <div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer cart_body items" data-url="{{route('removeCart')}}">
-               <div class="ajaxcart__row">
+               <div class="ajaxcart__row" data-url="{{route('updateCart')}}">
                   <div class="cart--empty-message">
                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 201.387 201.387" style="enable-background:new 0 0 201.387 201.387;" xml:space="preserve">
                         <g>
@@ -467,8 +471,7 @@
    <link rel="preload" as="script" href="{{asset('frontend/js/main.js')}}" />
    <script src="{{asset('frontend/js/main.js')}}" type="text/javascript"></script>
    @yield('js')
-   <div id="fb-root"></div>
-   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0" nonce="zW87aZjL"></script>
+   {{-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0" nonce="zW87aZjL"></script> --}}
    <!-- Messenger Plugin chat Code -->
    <div id="fb-root"></div>
 
@@ -610,7 +613,11 @@
                let countCart = Object.keys(data).length;
                let html = '';
                $.each(cart , function (index, value){
-                  discountPrice = value.price - value.price * (value.discount / 100);
+                  if (value.discount > 0) {
+                     discountPrice = value.discount;
+                  } else {
+                     discountPrice = value.price;
+                  }
                   html += '<div class="ajaxcart__product cart_product">';
                   html += '<a href="#" class="ajaxcart__product-image cart_image">';
                   html += '<img width="80" height="80" src="'+value.image+'">';
@@ -640,7 +647,7 @@
                   html += '</div>';
                   html += '</div>';
                   html += '</div>';
-                  totalPrice += (value.price - value.price * (value.discount / 100)) * value.quantity;
+                  totalPrice += discountPrice * value.quantity;
                })
                total = formatNumber(totalPrice);
                $('#CartContainer .cart_body .ajaxcart__row').html(html);
@@ -665,7 +672,12 @@
                let html = '';
                let totalPrice = 0;
                $.each(cart , function (index, value){
-                  totalPrice += (value.price - value.price * (value.discount / 100)) * value.quantity;
+                  if (value.discount > 0) {
+                     discountPrice = value.discount;
+                  } else {
+                     discountPrice = value.price;
+                  }
+                  totalPrice += discountPrice * value.quantity;
                })
                total = formatNumber(totalPrice);
                $('#CartContainer .total-price').html(total+'₫');
@@ -686,7 +698,12 @@
                let html = '';
                let totalPrice = 0;
                $.each(cart , function (index, value){
-                  totalPrice += (value.price - value.price * (value.discount / 100)) * value.quantity;
+                  if (value.discount > 0) {
+                     discountPrice = value.discount;
+                  } else {
+                     discountPrice = value.price;
+                  }
+                  totalPrice += discountPrice * value.quantity;
                })
                total = formatNumber(totalPrice);
                $('#CartContainer .total-price').html(total+'₫');
@@ -707,7 +724,11 @@
                      let countCart = Object.keys(data).length;
                      let html = '';
                      $.each(cart , function (index, value){
-                        discountPrice = value.price - value.price * (value.discount / 100);
+                        if (value.discount > 0) {
+                           discountPrice = value.discount;
+                        } else {
+                           discountPrice = value.price;
+                        }
                         html += '<div class="ajaxcart__product cart_product">';
                         html += '<a href="#" class="ajaxcart__product-image cart_image">';
                         html += '<img width="80" height="80" src="'+value.image+'">';
@@ -735,7 +756,7 @@
                         html += '</div>';
                         html += '</div>';
                         html += '</div>';
-                        totalPrice += (value.price - value.price * (value.discount / 100)) * value.quantity;
+                        totalPrice += discountPrice * value.quantity;
                      })
                      total = formatNumber(totalPrice);
                      $('#CartContainer .cart_body .ajaxcart__row').html(html);

@@ -80,7 +80,7 @@
                 />
               </div>
               <div class="form-group">
-                <label>Phần trăm giảm giá</label>
+                <label>Giá Sau Giảm (Giá bán)</label>
                 <vs-input
                   type="number"
                   size="default"

@@ -82,6 +82,7 @@ class AppServiceProvider extends ServiceProvider
             ])->orderBy('id','DESC')->get(['id','title','slug','image','description']);
             $hotProduct = Product::where(['status'=>1, 'discountStatus'=>1])->limit(8)->get(['id', 'name', 'cate_slug', 'slug', 'price', 'images']);
             $helpCustomer = PageContent::where(['status'=>1,'language'=>'vi', 'type'=>'ho-tro-khach-hang'])->get();
+            $aboutUs = PageContent::where(['status'=>1,'language'=>'vi', 'type'=>'ve-chung-toi'])->get();
             $view->with([
                 'promotio' => $promotio,
                 'setting' => $setting,
@@ -98,7 +99,8 @@ class AppServiceProvider extends ServiceProvider
                 'hotProduct'=>$hotProduct,
                 'productBrands'=>$productBrands,
                 'helpCustomer'=>$helpCustomer,
-                'bannerAds'=>$bannerAds
+                'bannerAds'=>$bannerAds,
+                'aboutUs'=>$aboutUs
                 ]);    
         });  
     }

@@ -12,7 +12,7 @@ class Bill extends Model
 	public function bill_detail()
     {
         return $this->hasMany(BillDetail::class, 'code_bill', 'code_bill')
-            ->select(['code_bill', 'code_product', 'qty', 'name', 'price', 'images','discount']);
+            ->select(['code_bill', 'code_product', 'qty', 'name', 'price', 'images','discount', 'color', 'size']);
 	}
 	public function getDetail($code)
 	{

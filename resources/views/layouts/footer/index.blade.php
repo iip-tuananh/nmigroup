@@ -124,11 +124,21 @@
                      </span>
                </h4>
                <div class="footer-menu toggle-mn-none">
-                     <a href="{{route('home')}}" title="Trang chủ" rel="nofollow">Trang chủ</a>
-                     <a href="{{route('listSale')}}" title="Sale" rel="nofollow">Sale</a>
-                     <a href="{{route('allProduct')}}" title="Sản phẩm" rel="nofollow">Sản phẩm</a>
-                     <a href="{{route('allListBlog')}}" title="Tin tức" rel="nofollow">Tin tức</a>
-                     <a href="{{route('lienHe')}}" title="Liên hệ" rel="nofollow">Liên hệ</a>
+                  @foreach ($aboutUs as $item)
+                     <a href="{{route('pagecontent', ['slug'=>$item->slug])}}" title="{{$item->title}}" rel="nofollow">{{$item->title}}</a>
+                  @endforeach
+               </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-12 footer-click">
+               <h4>
+                     <span>
+                     Hỗ trợ khách hàng
+                     </span>
+               </h4>
+               <div class="footer-menu toggle-mn-none">
+                  @foreach ($helpCustomer as $item)
+                     <a href="{{route('pagecontent', ['slug'=>$item->slug])}}" title="{{$item->title}}" rel="nofollow">{{$item->title}}</a>
+                  @endforeach
                </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6 col-12 footer-click">
@@ -140,21 +150,12 @@
                <div class="footer-menu toggle-mn-none">
                   <div class="fb-page" 
                   data-href="{{$setting->facebook}}"
-                  data-width="380" 
+                  data-width="360" 
                   data-hide-cover="false"
                   data-show-facepile="false"></div>
                </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-12 footer-click">
-               <h4>
-                     <span>
-                     Google map
-                     </span>
-               </h4>
-               <div class="payment">
-                     {!!$setting->iframe_map!!}
-               </div>
-            </div>
+            
          </div>
          </div>
    </div>

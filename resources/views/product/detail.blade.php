@@ -8,7 +8,7 @@
 @php
 $imgs = json_decode($product->images);
 $imgColor = json_decode($product->size);
-if ($product->discount > 0) {
+if ($product->discount > 0 && $product->price > 0) {
    $discount = round((($product['price'] - $product['discount']) / $product['price']) * 100, 1, PHP_ROUND_HALF_UP);
 }
 @endphp

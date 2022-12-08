@@ -1,7 +1,7 @@
 
 @php
 $img = json_decode($product['images']);
-if ($product->discount > 0) {
+if ($product->discount > 0 && $product->price > 0) {
    $discount = round((($product['price'] - $product['discount']) / $product['price']) * 100, 1, PHP_ROUND_HALF_UP);
 }
 @endphp
@@ -16,7 +16,7 @@ if ($product->discount > 0) {
          <img class="lazy layout-2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="{{$img[0]}}" alt="{{languageName($product->name)}}" />
          @endif
       </a>
-      @if ($product->discount > 0)
+      @if ($product->discount > 0 && $product->price > 0)
       <div class="sale_label">- {{$discount}}%</div>
       @endif
       <div class="product-action">

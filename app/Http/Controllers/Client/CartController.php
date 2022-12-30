@@ -52,7 +52,10 @@ class CartController extends Controller
                 }
 				DB::commit();
                 $request->session()->forget('cart');
-                return Redirect::to('/')->with('success', 'Gửi đơn hàng thành công');
+                $data['bill'] = $query;
+                $data['billdetail'] = BillDetail::where('code_bill', $code_bill)->get();
+                return view('cart.notify-success', $data);
+                // return Redirect::to('/')->with('success', 'Gửi đơn hàng thành công');
 			} catch (\Throwable $e) {
 			DB::rollBack();
 			throw $e;

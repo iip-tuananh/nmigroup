@@ -45,7 +45,7 @@ class ProductController extends Controller
                 'brand' => function ($query) {
                     $query->select('id','name','slug'); 
                 },
-            ])->where('slug', 'LIKE', '%'.$keyword.'%')->orderBy('category', 'asc')->get();
+            ])->where('slug', 'LIKE', '%'.$keyword.'%')->orderBy('category', 'DESC')->get();
         }
         return response()->json([
             'data' => $data,

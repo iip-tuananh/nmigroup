@@ -71,8 +71,8 @@ data() {
 },
 components: {},
 computed: {
-  data() {
-      return this.items.slice().reverse();
+  sortedItems() {
+      return this.items.slice().sort((a, b) => b.id - a.id);
     },
 },
 watch: {},

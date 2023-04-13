@@ -64,9 +64,8 @@
                         </div>
                         <div class="icon hotline">
                            <a href="tel:{{$setting->phone1}}" title="Hotline: {{$setting->phone1}}" rel="nofollow">
-                              <img src="{{url('frontend/images/hotline.jpg')}}" alt="" loading="lazy">
-                              {{-- <img src="{{url('frontend/images/hotline.png')}}" alt="" loading="lazy">
-                              <p>{{$setting->phone1}}</p> --}}
+                           <div class="icon-phone-t"><i class="fa-solid fa-phone-volume" style="color: #00836c;"></i></div>
+                           <div class="sdt">{{$setting->phone1}}</div>
                            </a>
                         </div>
                         <style>

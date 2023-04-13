@@ -72,7 +72,7 @@ data() {
 components: {},
 computed: {
   data() {
-      return this.items.slice().sort((a, b) => a.id - b.id);
+      return this.items.slice().reverse();
     },
 },
 watch: {},

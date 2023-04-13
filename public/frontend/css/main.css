@@ -1,0 +1,16 @@
+.flex-phone{
+    display: flex;
+}
+.icon-phone-t{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid red;
+}
+.sdt{
+    background-color: blue;
+    color: wheat;
+    border-radius: 10px;
+    height: 40px;
+    
+}

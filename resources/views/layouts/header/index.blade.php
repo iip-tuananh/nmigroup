@@ -63,7 +63,7 @@
                            </a>
                         </div>
                         <div class="icon hotline">
-                           <a href="tel:{{$setting->phone1}}" title="Hotline: {{$setting->phone1}}" rel="nofollow">
+                           <a href="tel:{{$setting->phone1}}" title="Hotline: {{$setting->phone1}}" rel="nofollow" class="flex-phone">
                            <div class="icon-phone-t"><i class="fa-solid fa-phone-volume" style="color: #00836c;"></i></div>
                            <div class="sdt">{{$setting->phone1}}</div>
                            </a>

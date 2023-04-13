@@ -47,7 +47,6 @@ class ProductController extends Controller
                 },
             ])->where('slug', 'LIKE', '%'.$keyword.'%')->orderBy('category', 'DESC')->get();
         }
-        dd($data);
         return response()->json([
             'data' => $data,
             'message' => 'success'

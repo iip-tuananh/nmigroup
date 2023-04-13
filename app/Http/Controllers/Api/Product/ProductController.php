@@ -30,7 +30,7 @@ class ProductController extends Controller
                 'brand' => function ($query) {
                     $query->select('id','name','slug'); 
                 },
-            ])->orderBy('category', 'DESC')->get();
+            ])->orderBy('category', 'asc')->get();
         }else{
             $data = Product::with([
                 'cate'=> function($query) {
@@ -45,7 +45,7 @@ class ProductController extends Controller
                 'brand' => function ($query) {
                     $query->select('id','name','slug'); 
                 },
-            ])->where('slug', 'LIKE', '%'.$keyword.'%')->orderBy('category', 'DESC')->get();
+            ])->where('slug', 'LIKE', '%'.$keyword.'%')->orderBy('category', 'asc')->get();
         }
         return response()->json([
             'data' => $data,

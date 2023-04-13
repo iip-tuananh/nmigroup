@@ -22,7 +22,10 @@
               <vs-th>Hành động</vs-th>
             </template>
             <template slot-scope="{data}">
-              <vs-tr :key="indextr" v-for="(tr, indextr) in data">
+              <vs-tr :key="indextr" v-for="(tr, indextr) in data.slice().reverse()">
+  <!-- Nội dung của thành phần -->
+
+
                 <vs-td ><vs-avatar size="large" :src="JSON.parse(tr.images)[0]"/></vs-td>
                 <vs-td>{{JSON.parse(tr.name)[0].content}}</vs-td>
                 <vs-td v-if="tr.cate != null">{{JSON.parse(tr.cate.name)[0].content}}</vs-td>

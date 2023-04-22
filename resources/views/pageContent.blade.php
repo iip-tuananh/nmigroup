@@ -17,14 +17,14 @@
       text-transform: uppercase;
       font-size: 24px;
       font-weight: 600;
-      color: #314e4e;
+      color: #01836b;
    }
    .banner-page .content-banner-page h1:after {
       content: '';
       position: absolute;
       width: 100%;
       height: 2px;
-      background: #314e4e;
+      background: #01836b;
       bottom: 0;
       left: 0;
    }
